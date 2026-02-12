@@ -1,10 +1,10 @@
-# IF4035 Blockchain Semester 1 2025/2026 Group Project
-# HiFiChain: Decentralized High-Fidelity Asset Authentication
+# IF4035 Blockchain Semester 1 2025/2026 Project - HiFiChain: Decentralized High-Fidelity Asset Authentication
 
-**Student:** Naufal Baldemar Ardanni (13521154)  
-**License:** AGPL-3.0
+## Identity
 
----
+| Student ID | Name                    |
+| ---------- | ----------------------- |
+| 13521154   | Naufal Baldemar Ardanni |
 
 ## 1. Application Description
 
@@ -122,13 +122,3 @@ After completing steps 1-5, users can interact with the application.
     npm run dev
     ```
 4.  Open your browser and access: `http://localhost:5173`
-
----
-
-## Appendix: Security (OWASP Compliance)
-
-This project mitigates security risks according to OWASP Smart Contract standards:
-
-- **S02 (Access Control):** Uses `onlyOwner` modifier on critical functions (`registerAsset`, `updateExchangeRate`).
-- **S03 (Integer Overflow):** Utilizes Solidity v0.8+ which includes built-in overflow checks.
-- **Oracle Manipulation:** Implements input validation `require(_rate > 0)` to prevent zero/negative price data.
