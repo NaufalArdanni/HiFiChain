@@ -1,0 +1,418 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
+:root {
+  --accent-gold: #e5c279;
+  --accent-gold-dim: rgba(229, 194, 121, 0.1);
+  --bg-core: #050505;
+  --bg-panel: #111111;
+  --text-primary: #f2f2f2;
+  --text-secondary: #888888;
+  --border-glass: #333333;
+  --success: #4caf50;
+  --error: #ff5252;
+
+  --font-main: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-core);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 50%);
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+#root {
+  width: 100%;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-gold);
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn {
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: transparent;
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+.btn-primary:hover {
+  background: var(--accent-gold-dim);
+}
+
+.btn-accent {
+  background: var(--accent-gold);
+  color: #050505;
+  width: 100%;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+.btn-accent:hover:not(:disabled) {
+  background: #f0d595;
+}
+.btn-accent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #222;
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+}
+
+.wallet-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  border: 1px solid var(--border-glass);
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.indicator {
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--success);
+}
+
+.hifi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+input {
+  background: #0f0f0f;
+  border: 1px solid var(--border-glass);
+  padding: 12px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+input:focus {
+  border-color: var(--accent-gold);
+  outline: none;
+}
+
+.glass-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.panel-header {
+  margin-bottom: 1.5rem;
+}
+h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.status-message {
+  margin-top: 1.5rem;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.status-message.loading {
+  color: var(--text-secondary);
+  background: #1a1a1a;
+}
+.status-message.success {
+  color: var(--success);
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+.status-message.error {
+  color: var(--error);
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px solid rgba(255, 82, 82, 0.2);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--text-secondary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+.search-bar input {
+  flex: 1;
+}
+
+.result-container {
+  margin-top: 1.5rem;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.certificate-card {
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.certificate-card.valid {
+  background: linear-gradient(
+    180deg,
+    rgba(229, 194, 121, 0.05) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 15px rgba(229, 194, 121, 0.05);
+}
+
+.cert-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 10px;
+}
+.cert-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  margin: 0;
+}
+.cert-icon {
+  color: var(--accent-gold);
+}
+
+.cert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.data-row .label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.data-row .value {
+  font-weight: 500;
+  text-align: right;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  max-width: 65%;
+}
+.data-row .value.mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  word-break: break-all;
+  line-height: 1.4;
+}
+.verified {
+  color: var(--success);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.certificate-card.invalid {
+  background: rgba(255, 82, 82, 0.05);
+  border-color: rgba(255, 82, 82, 0.3);
+  text-align: center;
+}
+.certificate-card.invalid .cert-header {
+  justify-content: center;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+.certificate-card.invalid h3 {
+  color: var(--error);
+}
+.certificate-card.invalid .cert-icon {
+  color: var(--error);
+}
+
+.app-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-glass);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  width: 1px;
+  height: 12px;
+  background: var(--border-glass);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 1.5rem 1rem;
+  }
+
+  .input-group-row {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .wallet-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+  }
+  .glass-panel {
+    padding: 1.25rem;
+  }
+
+  .data-row {
+    font-size: 0.9rem;
+  }
+}
